@@ -1,0 +1,32 @@
+use('ProjetoAPI');
+db.livros.insertOne({
+    "titulo": "A Metamorfose",
+    "autor": "Franz Kafka",
+    "publicacao": new Date(2020-04-10),
+    "paginas": 232,
+    "editora": "Antofágica",
+    "idioma": "Português",
+    "preco": 69.90
+});
+
+use('ProjetoAPI');
+db.livros.insertOne({
+    "titulo": "O Capital",
+    "autor": "Karl Marx",
+    "publicacao": new Date(2014-11-07),
+    "paginas": 208,
+    "editora": "Veneta",
+    "idioma": "Português",
+    "preco": 33.67
+});
+
+use('ProjetoAPI');
+db.livros.insertOne({
+    "titulo": "A República",
+    "autor": "Platão",
+    "publicacao": new Date(2021-08-07),
+    "paginas": 363,
+    "editora": "Lafonte",
+    "idioma": "Português",
+    "preco": 37.44
+});
