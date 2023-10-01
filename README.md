@@ -24,24 +24,24 @@ Accessar: http://localhost:4000/
     </thead>
     <tbody>
         <tr>
-            <th>/</th>
-            <th>Root do Projeto - HTML de apresetação da API</th>
+            <td><code>/</code></td>
+            <td>Root do Projeto - HTML de apresetação da API</td>
         </tr>
         <tr>
-            <th>/api</th>
-            <th>Root da API - Versão e Status da API</th>
+            <td><code>/api</code></td>
+            <td>Root da API - Versão e Status da API</td>
         </tr>
         <tr>
-            <th>/api/livros</th>
-            <th>Lista todos os Livros</th>
+            <td><code>/api/livros</code></td>
+            <td>Lista todos os Livros</td>
         </tr>
         <tr>
-            <th>/api/livros/:id</th>
-            <th>Lista um Livro pelo ID</th>
+            <td><code>/api/livros/:id</code></td>
+            <td>Lista um Livro pelo ID</td>
         </tr>
         <tr>
-            <th>/api/livros/preco/:precoMin-:precoMax/titulo/:titulo</th>
-            <th>Lista os Livros filtrados por Preço Mínimo e Máximo e por Título</th>
+            <td><code>/api/livros/preco/:precoMin-:precoMax/titulo/:titulo</code></td>
+            <td>Lista os Livros filtrados por Preço Mínimo e Máximo e por Título</td>
         </tr>
     </tbody>
 </table>
