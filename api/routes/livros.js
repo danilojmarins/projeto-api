@@ -15,7 +15,6 @@ const validaLivro = [
     ,
     check('publicacao')
         .not().isEmpty().trim().withMessage('Data de Publicação é obrigatório.')
-        .isDate().withMessage('Data de Publicação deve ser uma data.')
     ,
     check('paginas')
         .not().isEmpty().trim().withMessage('Número de páginas é obrigatório.')
@@ -133,6 +132,8 @@ router.delete('/:id', async (req, res) => {
 */
 router.post('/', validaLivro, async (req, res) => {
 
+    req.body.publicacao = new Date(req.body.publicacao);
+
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -152,6 +153,8 @@ router.post('/', validaLivro, async (req, res) => {
     Altera um Livro
 */
 router.put('/', validaLivro, async (req, res) => {
+
+    req.body.publicacao = new Date(req.body.publicacao);
     
     const id = req.body._id;
     delete req.body._id;

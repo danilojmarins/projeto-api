@@ -1,0 +1,57 @@
+// Teste das Requisições REST dos Livros
+@baseURL = http://localhost:4000/api/livros
+
+// GET - Lista todos os registros
+GET {{baseURL}}
+Content-Type: application/json
+
+
+###
+// GET - Lista um registro pelo ID
+GET {{baseURL}}/6511a37415748128bd73fa3f
+Content-Type: application/json
+
+
+###
+// GET - Lista um registro filtrado por Preço Mínimo e Máximo e Título
+GET {{baseURL}}/preco/10-100/titulo/metamorfose
+Content-Type: application/json
+
+
+###
+// DELETE - Apaga um registro pelo ID
+DELETE {{baseURL}}/6511a385f65d8f0c1af71196
+Content-Type: application/json
+
+
+###
+// POST - Insere um registro
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "titulo": "A Metamorfose",
+    "autor": "Franz Kafka",
+    "publicacao": "2020-04-10",
+    "paginas": 232,
+    "editora": "Antofágica",
+    "idioma": "Português",
+    "preco": 69.90
+}
+
+
+###
+// PUT - Altera um registro
+PUT {{baseURL}}
+Content-Type: application/json
+
+{
+    "_id": "6519eb05f35b3c2e60523f75",
+    "titulo": "A Metamorfose 2",
+    "autor": "Franz Kafka",
+    "publicacao": "2020-04-10",
+    "paginas": 232,
+    "editora": "Antofágica",
+    "idioma": "Português",
+    "preco": 69.90
+}
