@@ -22,7 +22,6 @@ Accessar: http://localhost:4000/
             <th>Descrição</th>
         </tr>
     </thead>
-
     <tbody>
         <tr>
             <th>/</th>
