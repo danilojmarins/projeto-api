@@ -8,7 +8,7 @@
    npm install
    npm run dev
 ```
-Accessar: http://localhost:4000/
+Acessar: http://localhost:4000/
 
 ### Variáveis de Ambiente
 - Renomeie o arquivo '.env-example' para '.env'
@@ -66,3 +66,8 @@ Accessar: http://localhost:4000/
         </tr>
     </tbody>
 </table>
+
+### Colaboradores
+- Danilo José Marins
+
+Link da API Pública: https://projeto-api-nu.vercel.app/
