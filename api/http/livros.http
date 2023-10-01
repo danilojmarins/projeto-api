@@ -1,5 +1,5 @@
 // Teste das Requisições REST dos Livros
-@baseURL = http://localhost:4000/api/livros
+@baseURL = https://projeto-api-nu.vercel.app/api/livros
 
 // GET - Lista todos os registros
 GET {{baseURL}}
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 // DELETE - Apaga um registro pelo ID
-DELETE {{baseURL}}/6511a385f65d8f0c1af71196
+DELETE {{baseURL}}/6519f89b56d612db79c268d1
 Content-Type: application/json
 
 
@@ -46,12 +46,12 @@ PUT {{baseURL}}
 Content-Type: application/json
 
 {
-    "_id": "6519eb05f35b3c2e60523f75",
+    "_id": "6519f89b56d612db79c268d1",
     "titulo": "A Metamorfose 2",
     "autor": "Franz Kafka",
-    "publicacao": "2020-04-10",
-    "paginas": 232,
+    "publicacao": "2020-04-10T00:00:00.000Z",
+    "paginas": "232",
     "editora": "Antofágica",
     "idioma": "Português",
-    "preco": 69.90
-}
+    "preco": "69.9"
+  }
