@@ -1,5 +1,6 @@
 import express from 'express';
 import rotasLivros from './routes/livros.js';
+import rotasUsuarios  from './routes/usuarios.js';
 
 const PORT = 4000 || process.env.PORT;
 
@@ -23,6 +24,7 @@ app.get('/api', (req, res) => {
 });
 
 app.use('/api/livros', rotasLivros);
+app.use('/api/usuarios', rotasUsuarios);
 
 // Tratamento de Rotas Inválidas
 app.use((req, res) => {

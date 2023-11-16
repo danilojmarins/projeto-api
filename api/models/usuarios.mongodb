@@ -1,0 +1,15 @@
+use('ProjetoAPI');
+db.usuarios.insertOne({
+    'nome': 'Roddy Ricch',
+    'email': 'teste@teste.com',
+    'senha': '123Mudar',
+    'ativo': true,
+    'tipo': 'Cliente',
+    'avatar': 'https://ui-avatars.com/api/?name=Roddy+Ricch'
+});
+
+use('ProjetoAPI');
+db.usuarios.createIndex({ 'email': 1 }, { unique: true });
+
+use('ProjetoAPI');
+db.usuarios.find({});
