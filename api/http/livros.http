@@ -46,12 +46,12 @@ PUT {{baseURL}}
 Content-Type: application/json
 
 {
-    "_id": "6519f89b56d612db79c268d1",
+    "_id": "6519ebb749357410a80c8ca0",
     "titulo": "A Metamorfose 2",
     "autor": "Franz Kafka",
-    "publicacao": "2020-04-10T00:00:00.000Z",
+    "publicacao": "2020-04-10",
     "paginas": "232",
     "editora": "Antofágica",
     "idioma": "Português",
-    "preco": "69.9"
-  }
+    "preco": 69.80
+}

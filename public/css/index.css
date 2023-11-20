@@ -3,7 +3,11 @@ body {
     color: #333;
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    padding: 1rem 2rem;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-card {
@@ -54,6 +58,22 @@ body {
     }
 }
 
+.submit {
+    width: fit-content;
+    font: inherit;
+    color: #444;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: lightgreen;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        box-shadow: 1px 1px 5px #AAA;
+    }
+}
+
 .footer {
     background-color: #EEE;
     padding: 0.5rem 2rem;
@@ -64,4 +84,49 @@ body {
 h1 {
     margin: 0 0 2rem 0;
     padding: 0;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 300px;
+    padding: 2rem 0;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    transition: all 0.35s ease;
+
+    .close {
+        color: red;
+        font-weight: 600;
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: right;
+        width: fit-content;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 5px;
+    }
+
+    .errors {
+        font-size: 0.8rem;
+        padding: 0 0.5rem;
+    }
+
+    .err {
+        margin: 0.3rem 0;
+        width: fit-content;
+    }
+}
+
+.visible {
+    visibility: visible;
+    top: 20px;
 }

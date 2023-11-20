@@ -20,7 +20,7 @@
     <div class="login-card">
         <h1 class="header">Área Restrita</h1>
 
-        <form class="body">
+        <form class="body" id="login-form">
             <div class="option">
                 <label>E-mail:</label>
                 <input class="txt-input" id="email" type="email">
@@ -30,6 +30,10 @@
                 <label>Senha:</label>
                 <input class="txt-input" id="senha" type="password">
             </div>
+
+            <div class="option">
+                <input class="submit" id="submit" type="submit" value="Entrar">
+            </div>
         </form>
 
         <div class="footer">
@@ -37,8 +41,17 @@
         </div>
     </div>
 
+    <div class="modal" id="modal">
+        <div class="errors" id="errors">
+            <div class="err">A senha deve ter no mínimo 6 caracteres.</div>
+            <div class="err">A senha deve ter no mínimo 6 caracteres.</div>
+        </div>
 
-
+        <span class="close" id="close">
+            X
+        </span>
+    </div>
     
+    <script src="js/login.js"></script>
 </body>
 </html>
