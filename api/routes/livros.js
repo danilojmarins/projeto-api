@@ -37,6 +37,7 @@ const validaLivro = [
     Lista todos os Livros
 */
 router.get('/', async (req, res) => {
+    console.log(req.cookies);
     try {
         const docs = await livros.find().toArray();
 

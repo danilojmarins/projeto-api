@@ -1,4 +1,5 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import rotasLivros from './routes/livros.js';
 import rotasUsuarios  from './routes/usuarios.js';
 
@@ -9,11 +10,14 @@ const app = express();
 // Parse JSON
 app.use(express.json());
 
+// Parse HTTP cookies da requisição
+app.use(cookieParser());
+
 // Rota para servir arquivos estáticos
 app.use('/', express.static('public'));
 
 // Configura Favicon
-app.use('/favicon.ico', express.static('public/images/laptop.png'));
+app.use('/favicon.ico', express.static('public/images/computer.png'));
 
 // Rota base da API
 app.get('/api', (req, res) => {

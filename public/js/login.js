@@ -20,8 +20,7 @@ document.getElementById('login-form').addEventListener('submit', (e) => {
     })
     .then(response => response.json())
     .then((data) => {
-        if (data.access_token) {
-            localStorage.setItem('token', data.access_token);
+        if (data.success === true) {
             window.location.href = 'menu.html';
         }
         else if (data.errors) {

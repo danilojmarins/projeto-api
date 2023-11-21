@@ -136,9 +136,14 @@ router.post('/login', validaLogin, async (req, res) => {
             (err, token) => {
                 if (err) throw err;
 
-                return res.status(200).json({
-                    access_token: token
-                });
+                return res
+                    .cookie('access_token', token, {
+                        maxAge: 720000,
+                        httpOnly: true
+                    })
+                    .status(200)
+                    .json({ success: true })
+                ;
             }
         );
     }
@@ -153,15 +158,13 @@ router.post('/login', validaLogin, async (req, res) => {
  */
 router.get('/', auth, async (req, res) => {
     try {
-        usuarios
-            .find({}, { projection: { senha: false } })
-            .sort({ nome: 1 })
-            .toArray((err, docs) => {
-                if (!err) {
-                    return res.status(200).json(docs);
-                }
-            })
-        ;
+        const docs = await usuarios.find({}, { projection: { senha: false } }).toArray();
+
+        if (!docs) {
+            return res.status(400).json({ 'message': 'Usuários não encontrados.' });
+        }
+
+        return res.status(200).json(docs);
     }
     catch (err) {
         return res.status(500).json({
@@ -201,5 +204,36 @@ router.put('/:id', auth, validaUsuario, async (req, res) => {
         .catch(err => res.status(400).json(err))
     ;
 });
+
+router.get('/validateToken', async (req, res) => {
+    const token = req.cookies.access_token;
+
+    try {
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        /**
+         * decoded:
+         *  usuario (payload)
+         *  exp (expiration)
+         *  iat (issued at)
+         */
+
+        req.usuario = await decoded.usuario;
+
+        return res.status(200).json({
+            valid: true
+        });
+    }
+    catch (err) {
+        console.error(err.message);
+
+        return res.status(403).json({
+            valid: false
+        });
+    }
+});
+
+router.post('/logout', (req, res) => {
+    return res.clearCookie('access_token').sendStatus(200);
+})
 
 export default router;

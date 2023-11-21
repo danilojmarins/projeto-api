@@ -1,12 +1,10 @@
 import jwt from 'jsonwebtoken';
 
 export default async function auth(req, res, next) {
-    const token = req.header('access-token') || req.headers['x-access-token'];
+    const token = req.cookies.access_token;
 
     if (!token) {
-        return res.status(401).json({
-            message: 'Acesso negado.'
-        });
+        return res.status(401).redirect('/');
     }
 
     try {

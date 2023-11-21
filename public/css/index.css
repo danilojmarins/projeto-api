@@ -54,7 +54,7 @@ body {
     border-radius: 5px;
     
     &:focus {
-        outline: 1px solid blue;
+        outline: 1px solid #87C1FF;
     }
 }
 
@@ -129,4 +129,12 @@ h1 {
 .visible {
     visibility: visible;
     top: 20px;
+}
+
+footer {
+    text-align: center;
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    bottom: 20px;
 }
