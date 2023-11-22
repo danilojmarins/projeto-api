@@ -18,7 +18,7 @@
 
     <title>Livros</title>
 </head>
-<body>
+<body onload="carregaLivros()">
     <nav class="navbar">
         <div class="options">
             <div class="option">
@@ -42,6 +42,9 @@
     </nav>
 
     <form id="livros-form" method="post">
+        
+        <input type="hidden" id="id">
+
         <div class="row">
             <div class="form-option">
                 <label for="titulo">Título</label>
@@ -106,16 +109,7 @@
             </tr>
         </thead>
         <tbody id="dados">
-            <tr>
-                <td>A Metamorfose</td>
-                <td>Franz Kafka</td>
-                <td>13/12/2001</td>
-                <td>205</td>
-                <td>Lafonte</td>
-                <td>Português</td>
-                <td>R$ 32,90</td>
-                <td><button class="edit">Editar</button> <button class="delete">Excluir</button></td>
-            </tr>
+            
         </tbody>
     </table>
 
@@ -124,5 +118,6 @@
     </footer>
 
     <script src="js/validateToken.js"></script>
+    <script src="js/livros.js"></script>
 </body>
 </html>
