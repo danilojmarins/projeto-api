@@ -1,6 +1,7 @@
 import express from 'express';
 import { connectToDatabase } from '../utils/mongodb.js';
 import { check, validationResult } from 'express-validator';
+import auth from '../middlewares/auth.js';
 
 const router = express.Router();
 const { db, ObjectId } = await connectToDatabase();
@@ -36,7 +37,7 @@ const validaLivro = [
     GET /api/livros
     Lista todos os Livros
 */
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         const docs = await livros.find().toArray();
 
@@ -56,7 +57,7 @@ router.get('/', async (req, res) => {
     GET /api/livros/:id
     Lista Livro pelo ID
 */
-router.get('/:id', async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
 
     const id = req.params.id;
 
@@ -78,7 +79,7 @@ router.get('/:id', async (req, res) => {
     GET /api/livros/preco/:precoMin-:precoMax/titulo/:titulo
     Lista Livros filtrando por Preço Mínimo e Máximo e Título
 */
-router.get('/preco/:precoMin-:precoMax/titulo/:titulo', async (req, res) => {
+router.get('/preco/:precoMin-:precoMax/titulo/:titulo', auth, async (req, res) => {
 
     const precoMin = parseFloat(req.params.precoMin);
     const precoMax = parseFloat(req.params.precoMax);
@@ -111,7 +112,7 @@ router.get('/preco/:precoMin-:precoMax/titulo/:titulo', async (req, res) => {
     DELETE /api/livros/:id
     Apaga Livro pelo ID
 */
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
 
     const id = req.params.id;
 
@@ -130,7 +131,7 @@ router.delete('/:id', async (req, res) => {
     POST /api/livros
     Cria um novo Livro
 */
-router.post('/', validaLivro, async (req, res) => {
+router.post('/', auth, validaLivro, async (req, res) => {
 
     req.body.publicacao = new Date(req.body.publicacao);
 
@@ -152,7 +153,7 @@ router.post('/', validaLivro, async (req, res) => {
     PUT /api/livros
     Altera um Livro
 */
-router.put('/', validaLivro, async (req, res) => {
+router.put('/', auth, validaLivro, async (req, res) => {
 
     req.body.publicacao = new Date(req.body.publicacao);
     

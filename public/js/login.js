@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:4000/api';
+const baseURL = 'https://projeto-api-nu.vercel.app/api';
 
 document.getElementById('login-form').addEventListener('submit', (e) => {
     e.preventDefault();

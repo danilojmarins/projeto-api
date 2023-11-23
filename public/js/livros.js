@@ -72,6 +72,7 @@ async function salvaLivro(livro) {
 }
 
 async function carregaLivros() {
+    console.log('a')
     const tabela = document.getElementById('dados');
     tabela.innerHTML = '';
 
@@ -88,11 +89,11 @@ async function carregaLivros() {
             <tr>
                 <td>${livro.titulo}</td>
                 <td>${livro.autor}</td>
-                <td>${livro.publicacao}</td>
+                <td>${dateToPresentationFormat(livro.publicacao)}</td>
                 <td>${livro.paginas}</td>
                 <td>${livro.editora}</td>
                 <td>${livro.idioma}</td>
-                <td>${livro.preco}</td>
+                <td>${priceToPresentationFormat(livro.preco)}</td>
                 <td>
                     <button class="edit" onclick='getLivroById("${livro._id}")'>Editar</button> 
                     <button class="delete" onclick='deleteLivro("${livro._id}")'>Excluir</button>
@@ -139,7 +140,7 @@ async function getLivroById(id) {
             document.getElementById('id').value = data[0]._id,
             document.getElementById('titulo').value = data[0].titulo,
             document.getElementById('autor').value = data[0].autor,
-            document.getElementById('publicacao').value = data[0].publicacao,
+            document.getElementById('publicacao').value = dateToInputFormat(data[0].publicacao),
             document.getElementById('paginas').value = data[0].paginas,
             document.getElementById('editora').value = data[0].editora,
             document.getElementById('idioma').value = data[0].idioma,
@@ -150,3 +151,23 @@ async function getLivroById(id) {
         console.error(`Erro ao carregar livro: ${err}`);
     });
 }
+
+function dateToInputFormat(fullDate) {
+    return fullDate.substring(0, 10);
+}
+
+function dateToPresentationFormat(fullDate) {
+    const date = fullDate.substring(0, 10).split('-');
+    const year = date[0];
+    const month = date[1];
+    const day = date[2];
+    return day + '/' + month + '/' + year;
+}
+
+function priceToPresentationFormat(price) {
+    return 'R$ ' + parseFloat(price).toFixed(2).toString().replace('.', ',');
+}
+
+document.getElementById('publicacao').addEventListener('change', () => {
+    console.log(document.getElementById('publicacao').value);
+})

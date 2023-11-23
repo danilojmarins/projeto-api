@@ -138,7 +138,7 @@ router.post('/login', validaLogin, async (req, res) => {
 
                 return res
                     .cookie('access_token', token, {
-                        maxAge: 720000,
+                        maxAge: 86400000, // 24 horas
                         httpOnly: true
                     })
                     .status(200)
