@@ -1,6 +1,6 @@
 // Teste requsições REST da collection Usuários
 
-@baseURL = http://localhost:4000/api/usuarios
+@baseURL = https://projeto-api-nu.vercel.app/api/usuarios
 
 // POST - Insere novo registro
 POST {{baseURL}}
@@ -17,7 +17,8 @@ Content-Type: application/json
 
 
 ###
-// POST - Efetua o login
+// POST - Efetua o Login - JWT é salvo automaticamente
+// com Set-Cookie header. Cookie HTTP-Only
 POST {{baseURL}}/login
 Content-Type: application/json
 
@@ -28,28 +29,38 @@ Content-Type: application/json
 
 
 ###
+// POST - Efetua o Logout - JWT é excluído automaticamente
+// com Set-Cookie header.
+POST {{baseURL}}/logout
+Content-Type: application/json
+
+
+###
+// GET - Valida o Token dos Cookies
+GET {{baseURL}}/validateToken
+Content-Type: application/json
+
+
+###
 // GET - Lista os usuários
 GET {{baseURL}}
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjZlNjY0YTFhMThhYjAzZWE4NjVjIn0sImlhdCI6MTY5ODA3MjA0NiwiZXhwIjoxNjk4MzMxMjQ2fQ.m9QvIfpwZmzAwekobL3FA2HQALHP9bl1ksIEyQESL3M
 
 
 ###
 // DELETE - Remove um usuário pelo ID
-DELETE {{baseURL}}/653688d620e6b491797ca849
+DELETE {{baseURL}}/655508edbbeb4a965b42dd9c
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjZlNjY0YTFhMThhYjAzZWE4NjVjIn0sImlhdCI6MTY5ODA3MjA0NiwiZXhwIjoxNjk4MzMxMjQ2fQ.m9QvIfpwZmzAwekobL3FA2HQALHP9bl1ksIEyQESL3M
 
 
 ###
 // PUT - Update usuário pelo ID
-PUT {{baseURL}}/65368c742f51e1cabc26c86c
+PUT {{baseURL}}/655eb2798aae7c43fb99632a
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjZlNjY0YTFhMThhYjAzZWE4NjVjIn0sImlhdCI6MTY5ODA3MjA0NiwiZXhwIjoxNjk4MzMxMjQ2fQ.m9QvIfpwZmzAwekobL3FA2HQALHP9bl1ksIEyQESL3M
 
 {
-    "nome": "Ednaldo Pereira",
-    "email": "ednaldo.pereira@gmail.com",
+    "nome": "bbbb",
+    "email": "aaa@aaa.com",
     "senha": "Senha@123",
     "ativo": true,
     "tipo": "Cliente",

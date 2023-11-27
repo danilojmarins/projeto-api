@@ -181,7 +181,7 @@ router.get('/', auth, async (req, res) => {
  */
 router.delete('/:id', auth, async (req, res) => {
     await usuarios
-        .deleteOne({ '_id': { $eq: ObjectId(req.params.id) } })
+        .deleteOne({ '_id': { $eq: new ObjectId(req.params.id) } })
         .then(result => res.status(202).send(result))
         .catch(err => res.status(400).json(err))
     ;
@@ -199,12 +199,17 @@ router.put('/:id', auth, validaUsuario, async (req, res) => {
     }
 
     await usuarios
-        .updateOne({ '_id': { $eq: ObjectId(req.params.id) } }, { $set: req.body })
+        .updateOne({ '_id': { $eq: new ObjectId(req.params.id) } }, { $set: req.body })
         .then(result => res.status(200).send(result))
         .catch(err => res.status(400).json(err))
     ;
 });
 
+
+/**
+ *  GET /usuarios/validateToken
+ *  Valida Token JWT
+ */
 router.get('/validateToken', async (req, res) => {
     const token = req.cookies.access_token;
 
@@ -232,6 +237,11 @@ router.get('/validateToken', async (req, res) => {
     }
 });
 
+
+/**
+ *  POST /usuarios/logout
+ *  Faz o Logout do Usuário
+ */
 router.post('/logout', (req, res) => {
     return res.clearCookie('access_token').sendStatus(200);
 })
